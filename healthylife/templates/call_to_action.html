@@ -1,0 +1,44 @@
+{% load static %}
+
+<!-- Start Call To Action Area -->
+<section class="htc__new__product bg__white ptb--100">
+            <div class="container">
+                <div class="row">
+                    <div class="new__product__wrap clearfix">
+
+                        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                            <div class="new__product foo">
+                                <div class="new__product__thumb">
+                                    <a href="{% url 'custom_register' %}">
+                                        <img src="{% static 'images/call_to_action_user.jpg' %}" alt="new product">
+                                    </a>
+                                </div>
+                                <div class="new__product__details">
+                                    <h2>Mejora tu salud</h2>
+                                    <div class="new__product__btn">
+                                        <a class="htc__btn shop__now__btn" href="{% url 'custom_register' %}">Registrate como usuario</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 smt-30 xmt-30">
+                            <div class="new__product text__align--left foo">
+                                <div class="new__product__thumb">
+                                    <a href="{% url 'work_with_our' %}">
+                                        <img src="{% static 'images/call_to_action_collaborator.jpg' %}" alt="new product">
+                                    </a>
+                                </div>
+                                <div class="new__product__details">
+                                    <h2>Mejora la salud de los demás</h2>
+                                    <div class="new__product__btn">
+                                        <a class="htc__btn shop__now__btn" href="{% url 'work_with_our' %}">Registrate como colaborador</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End New Product -->
+                    </div>
+                </div>
+            </div>
+        </section>

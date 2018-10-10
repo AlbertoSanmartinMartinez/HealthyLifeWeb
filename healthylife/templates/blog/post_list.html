@@ -1,0 +1,79 @@
+{% extends "blog.html" %}
+{% load static %}
+{% load blog_tags %}
+
+{% block post_list %}
+
+  <!-- Start Post List Area -->
+  <div class="row">
+    <div class="blog__wrap clearfix">
+
+      <!-- Star Simple Post Area -->
+      {% if posts|length > 0 %}
+
+        {% for post in posts %}
+          <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+            <div class="blog foo">
+              <div class="blog__inner">
+                <div class="blog__thumb">
+
+                  <!-- Star Header Image Area -->
+                  {% for item in post.album.image_set.all %}
+                    {% if item.header_image %}
+                      <a href="{% url 'blog:detail_post' post_slug=post.slug %}">
+                        <img src="{{ item.image.url }}" alt="blog images">
+                      </a>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+
+                <br>
+                <h3>{{ post.title }}</h3>
+                <br>
+                <p>Date: {{ post.created_date.day }}/{{ post.created_date.month }}/{{ post.created_date.year }}</p>
+                <p>Category:<a href="{% url 'blog:category_posts' category=post.category.slug %}"> {{ post.category.name }}</a></p>
+                <p>Author:<a href="{% url 'blog:author_posts' username=post.author.username %}"> {{ post.author.username }}</a></p>
+                <br>
+                <p>{{ post.description }}</p>
+                <br>
+
+                <div class="blog__btn">
+                  <a class="read__more__btn" href="{% url 'blog:detail_post' post_slug=post.slug %}">Leer Más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+
+      </div>
+    </div>
+
+    <!-- Pagination Blog Area -->
+
+    <div class="row mt--60">
+      <div class="col-md-12">
+        <div class="htc__loadmore__btn">
+          {% if posts.has_previous %}
+            <a href="?page={{ posts.previous_page_number }}">Anterior</a>
+          {% endif %}
+          <a href="">{{ posts.number }}</a>
+          {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">Siguiente</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+  {% else %}
+    <div class="row mt--60">
+      <div class="col-md-12">
+        <div class="htc__loadmore__btn">
+          <p>No hay publicaciones con tu busqueda.</p>
+          <br>
+          <a href="{% url 'blog:list_post' %}">Ir al Blog</a>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  
+{% endblock %}

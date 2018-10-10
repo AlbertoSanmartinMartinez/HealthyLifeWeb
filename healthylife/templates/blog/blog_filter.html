@@ -1,0 +1,93 @@
+{% load static %}
+{% load blog_tags %}
+
+<!-- Blog Filter Button -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="filter__menu__container">
+        <div class="product__menu">
+        </div>
+        <div class="filter__box">
+          <a class="blog__filter__menu" href="#"><span class="ti-search"></span> Buscar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start Blog Filter Area -->
+  <div class="blog__filter__wrap">
+    <div class="filter__cart">
+      <div class="filter__cart__inner">
+
+        <div class="blog__filter__menu__close__btn">
+          <a href=""><i class="zmdi zmdi-close"></i></a>
+        </div>
+
+        <!-- Start Single Filter Area -->
+        <div class="filter__content">
+
+          <form action="{% url 'blog:blog_search' %}" method="POST">
+            {% csrf_token %}
+
+          <!-- Single Filter -->
+          <div class="fiter__content__inner">
+            <div class="single__filter">
+              <h2>Buscar</h2>
+              {{ blog_filter_form.title }}
+            </div>
+          </div>
+
+          <!-- Single Filter -->
+          <div class="fiter__content__inner">
+            <div class="single__filter">
+              <h2>Categoría</h2>
+              {{ blog_filter_form.category }}
+            </div>
+          </div>
+
+          <!-- Single Filter -->
+          <!--<div class="fiter__content__inner">
+            <div class="single__filter">
+              <h2>Etiquetas</h2>
+              {{ blog_filter_form.tags }}
+            </div>
+          </div>-->
+
+          <!-- Single Filter -->
+          <!--<div class="fiter__content__inner">
+              <div class="single__filter">
+              <h2>Fecha</h2>
+              {{ blog_filter_form.minimum_date }}
+              {{ blog_filter_form.maximum_date }}
+            </div>
+          </div>-->
+
+          <!-- Single Filter -->
+          <div class="fiter__content__inner">
+            <div class="single__filter">
+              <h2>Ordenar por:</h2>
+              {{ blog_filter_form.order_by }}
+              <!--<ul class="filter__list">
+                <li><a href="#default">Default</a></li>
+                <li><a href="#accessories">Accessories</a></li>
+                <li><a href="#bags">Bags</a></li>
+                <li><a href="#chair">Chair</a></li>
+                <li><a href="#decoration">Decoration</a></li>
+                <li><a href="#fashion">Fashion</a></li>
+              </ul>-->
+            </div>
+          </div>
+
+          <!-- Filter Button -->
+          <div class="fiter__content__inner">
+            <div class="single__filter">
+              <div class="contact-btn">
+                <input type="submit" class="fv-btn" value="Filtrar">
+              </div>
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>

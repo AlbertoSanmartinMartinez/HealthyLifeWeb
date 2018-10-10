@@ -1,0 +1,189 @@
+{% extends "blog.html" %}
+{% load static %}
+{% load blog_tags %}
+
+{% block post_detail %}
+
+  <!-- Start Post Detail Area -->
+  <section class="blog-details-wrap ptb--120 bg__white">
+    <div class="container">
+
+      {% include 'blog_filter.html' %}
+
+      <div class="row">
+        <div class="blog__wrap blog--page clearfix">
+            <div class="blog-details-top">
+
+              <!-- Start Post Deatil Header Image -->
+              <div class="blog-details-thumb-wrap">
+                <div class="blog-details-thumb">
+                  {% for item in images %}
+                    {% if item.header_image %}
+                      <img src="{{ item.image.url }}" alt="blog images">
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <!--<div class="upcoming-date">
+                  14<span class="upc-mth">Sep,2017</span>
+                  {{ post.created_date }}
+                </div>-->
+              </div>
+
+              <!-- Start Post Deatil Area -->
+              <h2>{{ post.title }}</h2>
+              <div class="blog-admin-and-comment">
+                <p><a href="{% url 'blog:author_posts' username=post.author.username %}">{{ post.author.username }}</a></p>
+                <p class="separator">|</p>
+                <p><a href="{% url 'blog:category_posts' category=post.category.slug %}">{{ post.category.name }}</a></p>
+                <p class="separator">|</p>
+                <p>{{ post.created_date }}</p>
+              </div>
+              <h3>{{ post.description }}</h3><br>
+              <div class="blog-details-pra">
+                {{ post.content | safe }}
+              </div>
+
+              <div class="postandshare">
+                <div class="blog-social-icon">
+                  <h2 class="ft__title">Compartir</h2>
+                  <!--<ul class="social__icon">
+                    <li><a href="https://twitter.com/BarbastroSMueve" target="_blank"><i class="zmdi zmdi-twitter"></i></a></li>
+                    <li><a href="https://www.instagram.com/barbastrosemueve/" target="_blank"><i class="zmdi zmdi-instagram"></i></a></li>
+                    <li><a href="https://www.facebook.com/BarbastroSeMueve/" target="_blank"><i class="zmdi zmdi-facebook"></i></a></li>
+                    <li><a href="https://www.facebook.com/BarbastroSeMueve/" target="_blank"><i class="zmdi zmdi-google"></i></a></li>
+                    <li><a href="https://www.facebook.com/BarbastroSeMueve/" target="_blank"><i class="zmdi zmdi-email"></i></a></li>
+                    <li><a href="https://www.facebook.com/BarbastroSeMueve/" target="_blank"><i class="zmdi zmdi-linkedin"></i></a></li>
+                  </ul>-->
+                  <div class="sharethis-inline-share-buttons"></div>
+                </div>
+              </div>
+
+              <div class="postandshare">
+                <div class="our-blog-tag">
+                  <h2 class="ft__title">Etiquetas</h2>
+                  <ul id="comments" class="tag-menu mt-40">
+                    {% for tag in post.tags.all %}
+                      <li><a href="{% url 'blog:tag_posts' tag_slug=tag.slug %}">{{tag.name}}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Start Post Deatil Comments Area -->
+              <div class="our-blog-comment mt--20">
+                <div class="blog-comment-inner">
+                  {% if comments %}
+                    <h2 class="section-title-2">COMENTARIOS ({{ num_comments }})</h2>
+
+                  <!-- Start Post Deatil Single Comment -->
+                  {% for comment in comments %}
+
+                  <div class="single-blog-comment">
+                    <div class="blog-comment-thumb">
+                      {% get_user_image username=comment.author as user_profile %}
+                        {% if user_profile %}
+                          <img src="{{ user_profile.profile_image.url }}" alt="comment images">
+                        {% else %}
+                          <img src="{% static 'images/user_default_image.jpg' %}" alt="comment images">
+                        {% endif %}
+                    </div>
+                    <div class="blog-comment-details">
+                      <div class="review__info">
+                          <h4><a>{{ comment.title }}</a></h4>
+                      </div>
+                      <div class="review__date">
+                          <span>{{ comment.author }}  |  {{ comment.created_date.day }}/{{ comment.created_date.month }}/{{ comment.created_date.year }}</span>
+                      </div>
+                      <p>{{ comment.content }}</p>
+                      <div class="review__date">
+                          <span>
+                            <div class="contact-btn">
+                              <br>
+                              {% get_user_authenticated request username=comment.author as user_authenticated %}
+                              {% if user_authenticated %}
+                                <a class="fv-btn" href="{% url 'blog:delete_comment' comment_id=comment.id %}">BORRAR</a>
+                              {% else %}
+                                <a href="#answer_form" class="blog__answer__reply">
+                                  <input class="fv-btn blog__answer__reply" type="button" onclick="set_comment_parent_id({{ comment.id|escapejs }})" value="RESPONDER">
+                                </a>
+                              {% endif %}
+                            </div>
+                          </span>
+                      </div>
+                    </div>
+                  </div>
+
+                    <!-- Start Post Deatil Replay Comment -->
+                    {% for answer in comment.answers.all %}
+                      <div class="single-blog-comment comment-reply">
+                        <div class="blog-comment-thumb">
+                          {% get_user_image username=answer.author as user_profile %}
+                            {% if user_profile %}
+                              <img src="{{ user_profile.profile_image.url }}" alt="comment images">
+                            {% else %}
+                              <img src="{% static 'images/user_default_image.jpg' %}" alt="comment images">
+                            {% endif %}
+                        </div>
+                        <div class="blog-comment-details">
+                          <div class="review__info">
+                              <h4><a>{{ answer.title }}</a></h4>
+                          </div>
+                          <div class="review__date">
+                              <span>{{ answer.author }}  |  {{ comment.created_date.day }}/{{ comment.created_date.month }}/{{ comment.created_date.year }}</span>
+                          </div>
+                          <p>{{ answer.content }}</p>
+                          <div class="review__date">
+                              <span>
+                                <div class="contact-btn">
+                                  <br>
+                                  {% get_user_authenticated request username=answer.author as user_authenticated %}
+                                  {% if user_authenticated %}
+                                    <a class="fv-btn" href="{% url 'blog:delete_comment' comment_id=answer.id %}">BORRAR</a>
+                                  {% else %}
+                                    <a href="#answer_form" class="blog__answer__reply">
+                                      <input class="fv-btn blog__answer__reply" type="button" onclick="set_comment_parent_id({{ comment.id|escapejs }})" value="RESPONDER">
+                                    </a>
+                                {% endif %}
+                                </div>
+                              </span>
+                          </div>
+                        </div>
+                      </div>
+
+                    {% endfor %}
+                  {% endfor %}
+                {% else %}
+                      <h2 class="section-title-2">SIN COMENTARIOS</h2>
+                {% endif %}
+                    </div>
+                </div>
+
+
+              <!-- Start Post Deatil Comment Form Area -->
+              <div id="answer_form"  class="our-reply-form-area mt--20">
+                <h2 class="contact__title">DEJA TU COMENTARIO</h2>
+
+                <!-- Start Comment Form Area -->
+                <div class="blog__comment__form">
+                  {% include 'comment_form.html' %}
+                </div>
+                <!-- Start Anser Form Area -->
+                <div class="blog__answer__form hidden">
+                  {% include 'answer_form.html' %}
+                </div>
+              </div>
+
+              <div class="postandshare">
+                <div>
+                  <h2 class="ft__title">Posts Relacionados</h2>
+                  {% include 'related_posts.html' %}
+                </div>
+              </div>
+
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

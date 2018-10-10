@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block blog %}
+
+  <!-- Start Breadcumbs Area -->
+  <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({% static 'images/blog_banner_1.jpg' %}) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="bradcaump__inner text-center">
+              <h2 class="bradcaump-title">Blog</h2>
+              <!--<nav class="bradcaump-inner">
+                <a class="breadcrumb-item" href="index.html">Home</a>
+                <span class="brd-separetor">/</span>
+                <span class="breadcrumb-item active">Titulo del post</span>
+              </nav>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start Blog Area -->
+  <section class="htc__blog__area blog--page ptb--120 bg__white">
+    <div class="container">
+      <div class="htc__product__container">
+
+        {% include 'blog_filter.html' %}
+
+        {% block post_detail %}
+        {% endblock %}
+
+        {% block post_list %}
+        {% endblock %}
+
+      </div>
+    </div>
+</section>
+
+{% endblock %}

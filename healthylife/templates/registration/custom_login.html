@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block login %}
+
+<div class="htc__login__register bg__white ptb--130" style="background: rgba(0, 0, 0, 0) url({% static 'images/white_background.png' %}) no-repeat scroll center center / cover ;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <ul class="login__register__menu" role="tablist">
+          <li class="login active"><a href="{% url 'custom_login' %}">Acceso</a></li>
+          <li class="register"><a href="{% url 'custom_register' %}">Registro</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Start Login Register Content -->
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="htc__login__register__wrap">
+
+          <!-- Start Single Content -->
+          <div id="login" role="tabpanel" class="single__tabs__panel tab-pane fade in active">
+            <form class="login" method="POST">
+              {% csrf_token %}
+              <div class="single-contact-form">
+                <div class="contact-box subject">
+                  {{ form.username }}
+                </div>
+              </div>
+              <div class="single-contact-form">
+                <div class="contact-box subject">
+                  {{ form.password }}
+                </div>
+              </div>
+              <div class="tabs__checkbox">
+                <!--<input type="checkbox">
+                <span> Remember me</span>-->
+                <span class="forget"><a href="{% url 'reset' %}">Has olvidado tu contraseña ?</a></span>
+              </div>
+              <div>
+                {% if form.errors %}
+                  {% for field in form %}
+                    {% for error in field.errors %}
+                      {% trans error|escape %}<br>
+                    {% endfor %}
+                  {% endfor %}
+                  {% for error in form.non_field_errors %}
+                    {% trans error|escape %}<br>
+                  {% endfor %}
+                {% endif %}
+                {{ error_message }}
+              </div>
+              <div class="contact-btn">
+                <!--<a href="{% url 'custom_login' %}">Acceder</a>-->
+                <input type="submit" class="fv-btn" value="Acceder">
+              </div>
+            </form>
+
+            <br>
+            <br>
+
+            <div class="ft__widget">
+              <h2 class="ft__title">Síguenos</h2>
+              <ul class="social__icon">
+                <li><a href="https://twitter.com/BarbastroSMueve" target="_blank"><i class="zmdi zmdi-twitter"></i></a></li>
+                <li><a href="https://www.instagram.com/barbastrosemueve/" target="_blank"><i class="zmdi zmdi-instagram"></i></a></li>
+                <li><a href="https://www.facebook.com/BarbastroSeMueve/" target="_blank"><i class="zmdi zmdi-facebook"></i></a></li>
+                <li><a href="https://www.facebook.com/BarbastroSeMueve/" target="_blank"><i class="zmdi zmdi-linkedin"></i></a></li>
+                <li><a href="https://www.facebook.com/BarbastroSeMueve/" target="_blank"><i class="zmdi zmdi-google-plus"></i></a></li>
+                <li><a href="https://www.facebook.com/BarbastroSeMueve/" target="_blank"><i class="zmdi zmdi-youtube"></i></a></li>
+              </ul>
+            </div>
+
+            <br>
+            <br>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

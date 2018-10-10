@@ -1,0 +1,36 @@
+{% load static %}
+{% load blog_tags %}
+
+<div class="contact-form-wrap">
+  <form method="POST" action="{% url 'blog:add_comment' post_slug=post.slug %}">
+    {% csrf_token %}
+
+    <div class="single-contact-form">
+      <div class="contact-box subject">
+        {{ comment_form.name }}
+      </div>
+    </div>
+    <div class="single-contact-form">
+      <div class="contact-box subject">
+        {{ comment_form.email }}
+      </div>
+    </div>
+    <div class="single-contact-form">
+      <div class="contact-box subject">
+        {{ comment_form.title }}
+      </div>
+    </div>
+    <div class="single-contact-form">
+      <div class="contact-box subject">
+        {{ comment_form.content }}
+      </div>
+    </div>
+
+    <br>
+    <br>
+    
+    <div class="contact-btn">
+      <input type="submit" class="fv-btn" value="Comentar">
+    </div>
+  </form>
+</div>

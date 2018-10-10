@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block health_section %}
+
+<!-- Health Breadcrumbs Area -->
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({% static 'images/health_banner_1.jpg' %}) no-repeat scroll center center / cover ;">
+  <div class="ht__bradcaump__wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="bradcaump__inner text-center">
+            <h2 class="bradcaump-title">Shop Page</h2>
+            <nav class="bradcaump-inner">
+              <a class="breadcrumb-item" href="index.html">Home</a>
+              <span class="brd-separetor">/</span>
+              <span class="breadcrumb-item active">Shop Page</span>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Start Health Features Area -->
+<section class="htc__product__area shop__page ptb--130 bg__white">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-7 col-lg-7 col-sm-6 col-xs-12">
+        <div class="row">
+
+          <!-- Start Feature 1 -->
+          <div class="col-md-12 col-sm-12 col-xs-12 xmt-30">
+            <div class="feature foo">
+              <div class="feature__thumb">
+                <a href="product-details.html">
+                  <img src="{% static 'images/1_health_feature.png' %}" alt="feature product">
+                </a>
+              </div>
+              <div class="feature__details">
+                <h4><a href="product-details.html">Latest Lamp</a></h4>
+                <div class="feature__btn">
+                  <a class="htc__btn shop__now__btn" href="cart.html">shop now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Start Feature 2 -->
+          <div class="col-md-7 mt--30 col-sm-12 col-xs-12 xmt-30">
+            <div class="feature text__pos--top foo">
+              <div class="feature__thumb">
+                <a href="product-details.html">
+                  <img src="{% static 'images/4_health_feature.jpg' %}" alt="feature product">
+                </a>
+              </div>
+              <div class="feature__details">
+                <h4><a href="product-details.html">New Clock</a></h4>
+                <div class="feature__btn">
+                  <a class="htc__btn shop__now__btn" href="cart.html">shop now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Start Feature 3 -->
+          <div class="col-md-5 mt--30 hidden-sm hidden-xs">
+            <div class="feature text__pos--top foo">
+              <div class="feature__thumb--2">
+                <a href="product-details.html">
+                  <img src="{% static 'images/3_health_feature.jpg' %}" alt="feature product">
+                </a>
+              </div>
+              <div class="feature__details">
+                <h4><a href="product-details.html">Bag Collection</a></h4>
+                <div class="feature__btn">
+                  <a class="htc__btn shop__now__btn" href="cart.html">shop now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Start Feature 4 -->
+      <div class="col-md-5 col-lg-5 col-sm-6 col-xs-12">
+        <div class="feature text__pos--top foo">
+          <div class="feature__thumb">
+            <a href="product-details.html">
+              <img src="{% static 'images/2_health_feature.jpg' %}" alt="feature product">
+            </a>
+          </div>
+          <div class="feature__details">
+            <h4><a href="product-details.html">New Products</a></h4>
+            <div class="feature__btn">
+              <a class="htc__btn shop__now__btn" href="cart.html">shop now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

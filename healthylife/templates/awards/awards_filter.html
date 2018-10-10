@@ -1,0 +1,62 @@
+{% load staticfiles %}
+
+<!-- Awards Filter Button -->
+<div class="row">
+  <div class="col-md-12">
+    <div class="filter__menu__container">
+      <div class="product__menu">
+        <!--<button data-filter="*"  class="is-checked">All</button>
+        <h3>Filtrar</h3>
+        <a class="blog_filter__menu" href="#"><span class="ti-search"></span></a>-->
+      </div>
+      <div class="filter__box">
+        <a class="award__filter__menu" href="#"><span class="ti-search"></span> Buscar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Start Award Filter Area -->
+<div class="award__filter__wrap">
+  <div class="filter__cart">
+    <div class="filter__cart__inner">
+
+      <div class="filter__menu__close__btn">
+        <a href=""><i class="zmdi zmdi-close"></i></a>
+      </div>
+
+      <!-- Start Single Filter Area -->
+      <div class="filter__content">
+
+        <form action="{% url 'awardsapp:search_awards' %}" method="POST">
+          {% csrf_token %}
+
+        <!-- Single Filter -->
+        <div class="fiter__content__inner">
+          <div class="single__filter">
+            <h2>Tipo</h2>
+            {{ awards_filter_form.award_type }}
+          </div>
+        </div>
+
+        <!-- Single Filter -->
+        <div class="fiter__content__inner">
+          <div class="single__filter">
+            <h2>Categoria</h2>
+            {{ awards_filter_form.category }}
+          </div>
+        </div>
+
+        <!-- Filter Button -->
+        <div class="fiter__content__inner">
+          <div class="single__filter">
+            <div class="contact-btn">
+              <input type="submit" class="fv-btn" value="Filtrar">
+            </div>
+          </div>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>

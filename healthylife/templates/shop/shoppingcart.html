@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load shop_tags %}
+
+{% block shoppincart %}
+
+<!-- Start ShoppingCart Bradcaump Area -->
+  <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({% static 'images/health_banner_1.jpg' %}) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="bradcaump__inner text-center">
+              <h2 class="bradcaump-title">Cart</h2>
+              <nav class="bradcaump-inner">
+                <a class="breadcrumb-item" href="index.html">Home</a>
+                <span class="brd-separetor">/</span>
+                <span class="breadcrumb-item active">Cart</span>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start ShoppingCart Area -->
+  <div class="cart-main-area ptb--120 bg__white">
+    <div class="container">
+      <div class="row">
+        {% if shoppingcart|length > 0 %}
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="table-content table-responsive">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="product-thumbnail">Imagen</th>
+                    <th class="product-name">Producto</th>
+                    <th class="product-price">Price</th>
+                    <th class="product-quantity">Cantidad</th>
+                    <th class="product-subtotal">Total</th>
+                    <th class="product-remove">Actualizar</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in shoppingcart %}
+                  <form method='POST' action="{% url 'shop:shoppingcart_add' product_id=item.product.id %}">
+                  <tr>
+                    <td class="product-thumbnail"><img src="{{ item.product.image.url }}" alt="product img" /></td>
+                    <td class="product-name"><a href="{% url 'shop:product_detail' product_slug=product.slug %}">{{ item.product.name }}</a></td>
+                    <td class="product-price"><span class="amount">{{ item.product.price }} €</span></td>
+                    <td class="product-quantity">{{ item.shoppingcart_form.quantity }}</td>
+                    <td class="product-subtotal">£165.00</td>
+                    <!-- Actualizar -->
+                    <td><input type="submit" value="Actualizar"></td>
+                  </tr>
+                  </form>
+                  {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 col-sm-7 col-xs-12">
+              <div class="buttons-cart">
+                <!--<input type="submit" value="Actualizar Carrito" />-->
+                <a href="{% url 'shop:product_list' %}">Volver a la Tienda</a>
+              </div>
+              <div class="coupon">
+                {% if user.is_authenticated %}
+                  <h3><a href="{% url 'awardsapp:awards_profile' user.username %}">Ver tus premios y descuentos</a></h3>
+                {% endif %}
+                <form action="" method="POST">
+                  {% csrf_token %}
+                  <input type="text" placeholder="Coupon code" />
+                  <input type="submit" value="Apply Coupon" />
+                </form>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-5 col-xs-12">
+              <div class="cart_totals">
+                <h2>Resumen</h2>
+                <br>
+                <table>
+                  <tbody>
+                    <tr class="cart-subtotal">
+                      <th>Subtotal</th>
+                      <td><span class="amount">£215.00</span></td>
+                    </tr>
+                    <tr class="shipping">
+                      <th>Impuestos</th>
+                      <td><span class="amount">£215.00</span></td>
+                    </tr>
+                    <!--<tr class="shipping">
+                      <td>
+                        <ul id="shipping_method">
+                          <li>
+                            <input type="radio" />
+                            <label>
+                              Flat Rate: <span class="amount">£7.00</span>
+                            </label>
+                          </li>
+                          <li>
+                            <input type="radio" />
+                            <label>
+                              Free Shipping
+                            </label>
+                          </li>
+                          <li></li>
+                        </ul>
+                        <p><a class="shipping-calculator-button" href="#">Calculate Shipping</a></p>
+                      </td>
+                    </tr>-->
+                    <tr class="order-total">
+                      <th>Total</th>
+                      <td>
+                        <strong>
+                          <span class="amount">£215.00</span>
+                        </strong>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div class="wc-proceed-to-checkout">
+                  <a href="{% url 'shop:address_checkout' %}">Finalizar Pedido</a>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      {% else %}
+      <div class="col-md-8 col-sm-7 col-xs-12">
+        <div class="buttons-cart">
+          <p>Tu carrito esta vacio.</p>
+          <a href="{% url 'shop:product_list' %}">Volver a la Tienda</a>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

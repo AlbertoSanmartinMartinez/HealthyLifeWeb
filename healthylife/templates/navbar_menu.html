@@ -1,0 +1,70 @@
+{% load static %}
+
+<!-- Start Navbar Icon Menu Area -->
+<div class="offsetmenu home-five bg__gray">
+  <div class="offsetmenu__inner sidebar__menu--inner">
+
+    <div class="offsetmenu__close__btn">
+      <a href="#"><i class="zmdi zmdi-close"></i></a>
+    </div>
+
+    <!-- Start Logo Area -->
+    <div class="off__contact">
+      <div class="logo">
+        <a href="{% url 'home' %}">
+          <img src="{% static 'images/logo_titulo.png' %}" alt="logo">
+        </a>
+      </div>
+    </div>
+
+    <!-- Start Navbar Area -->
+    <nav>
+      <ul class="sidebar__menu">
+        <!--<li><a href="{% url 'home' %}">Inicio</a></li>-->
+        <li><a href="{% url 'know_us' %}">Conocenos</a></li>
+        <li><a href="{% url 'sportapp:sport' %}">Deporte</a></li>
+        <li><a href="{% url 'nutritionapp:nutrition' %}">Nutricion</a></li>
+        <!--<li><a href="{% url 'healthapp:health' %}">Salud</a></li>-->
+        <li><a href="{% url 'awardsapp:awards' %}">Premios</a></li>
+        <!--<li><a href="{% url 'know_us' %}">Proyecto</a></li>-->
+        <li><a href="{% url 'blog:list_post' %}">Blog</a></li>
+        <!--<li><a href="{% url 'shop:product_list' %}">Tienda</a></li>-->
+        <li><a href="{% url 'contact' %}">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <!-- Start Option Area -->
+    <!--<div class="offset__widget">
+      <div class="offset__single">
+        <h4 class="offset__title">Language</h4>
+        <ul>
+          <li><a href="#"> Engish </a></li>
+          <li><a href="#"> French </a></li>
+          <li><a href="#"> German </a></li>
+        </ul>
+      </div>
+      <div class="offset__single">
+        <h4 class="offset__title">Currencies</h4>
+        <ul>
+          <li><a href="#"> USD : Dollar </a></li>
+          <li><a href="#"> EUR : Euro </a></li>
+          <li><a href="#"> POU : Pound </a></li>
+        </ul>
+      </div>
+    </div>-->
+
+    <!-- Start Social Menu Area -->
+    <!--<div class="offset__sosial__share">
+      <h4 class="offset__title">SIGUENOS</h4>
+      <ul class="off__soaial__link">
+        <li><a href="https://twitter.com/BarbastroSMueve" target="_blank"><i class="zmdi zmdi-twitter"></i></a></li>
+        <li><a href="https://www.instagram.com/barbastrosemueve/" target="_blank"><i class="zmdi zmdi-instagram"></i></a></li>
+        <li><a href="https://www.facebook.com/BarbastroSeMueve/" target="_blank"><i class="zmdi zmdi-facebook"></i></a></li>
+        <li><a href="https://www.facebook.com/BarbastroSeMueve/" target="_blank"><i class="zmdi zmdi-linkedin"></i></a></li>
+        <li><a href="https://www.facebook.com/BarbastroSeMueve/" target="_blank"><i class="zmdi zmdi-google-plus"></i></a></li>
+        <li><a href="https://www.facebook.com/BarbastroSeMueve/" target="_blank"><i class="zmdi zmdi-youtube"></i></a></li>
+      </ul>
+    </div>-->
+
+  </div>
+</div>

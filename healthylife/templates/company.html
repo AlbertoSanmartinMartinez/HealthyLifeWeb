@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block company %}
+<p>Información de la Empresa</p>
+    <hr>
+    {{ company.company_name }}<br>
+    {{ company.description }}<br>
+    {{ company.phone }}<br>
+    {{ company.web }}<br>
+    <img src="{{ company.company_image.url }}">
+{% endblock %}

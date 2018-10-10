@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load shop_tags %}
+
+{% block order_checkout %}
+
+<!-- Start Oreder Checkout Bradcaump area -->
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/2.jpg) no-repeat scroll center center / cover ;">
+  <div class="ht__bradcaump__wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="bradcaump__inner text-center">
+            <h2 class="bradcaump-title">Checkout</h2>
+            <nav class="bradcaump-inner">
+              <a class="breadcrumb-item" href="index.html">Home</a>
+              <span class="brd-separetor">/</span>
+              <span class="breadcrumb-item active">Checkout</span>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Start Shipping Checkout Area -->
+  <section class="our-checkout-area ptb--120 bg__white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-lg-8">
+          <div class="ckeckout-left-sidebar">
+
+            <!-- Start Shipping Checkout Form -->
+            <div class="checkout-form">
+              <h2 class="section-title-3">Método de Envío</h2>
+              <div class="checkout-form-inner">
+                <div class="single-checkout-box">
+                  <input type="text" placeholder="First Name*">
+                  <input type="text" placeholder="Last Name*">
+                </div>
+                <div class="single-checkout-box">
+                  <input type="email" placeholder="Emil*">
+                  <input type="text" placeholder="Phone*">
+                </div>
+                <div class="single-checkout-box">
+                  <textarea name="message" placeholder="Message*"></textarea>
+                </div>
+                <div class="single-checkout-box select-option mt--40">
+                  <select>
+                    <option>Country*</option>
+                    <option>Bangladesh</option>
+                    <option>Bangladesh</option>
+                    <option>Bangladesh</option>
+                    <option>Bangladesh</option>
+                  </select>
+                  <input type="text" placeholder="Company Name*">
+                </div>
+                <div class="single-checkout-box">
+                  <input type="email" placeholder="State*">
+                  <input type="text" placeholder="Zip Code*">
+                </div>
+                <div class="single-checkout-box checkbox">
+                  <input id="remind-me" type="checkbox">
+                  <label for="remind-me"><span></span>Create a Account ?</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 col-sm-7 col-xs-12">
+          <div class="buttons-cart">
+            <a href="{% url 'shop:address_checkout' %}">Dirección de Envío</a>
+            <a href="{% url 'shop:payment_checkout' %}">Método de Pago</a>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</section>
+
+{% endblock %}

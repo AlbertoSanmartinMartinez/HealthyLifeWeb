@@ -1,0 +1,51 @@
+{% load static %}
+
+<!-- Start Best Awards Home Area -->
+<section class="htc__blog__area bg__white pb--100">
+  <div class="container-fluid space--between">
+
+    <!-- Start Best Awards Title Area -->
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="section__title text-center">
+          <h2 class="title__line">Premios Mejor Valorados</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="blog__wrap clearfix mt--60 xmt-30">
+
+        <!-- Start Single Award -->
+        {% for award in best_awards %}
+        <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
+          <div class="banner style--2">
+            <div class="thumb">
+              {% for item in award.album.image_set.all %}
+                {% if item.header_image %}
+                  <a href="">
+                    <img src="{{ item.image.url }}" alt="blog images">
+                  </a>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <div class="content">
+              <h2><a href="{% url 'awardsapp:award_detail' award_slug=award.slug %}">{{ award.title}}</a></h2>
+              <a class="htc__btn shop__now__btn" href="#">Conseguir</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Go To Blog Button -->
+    <div class="row mt--60">
+      <div class="col-md-12">
+        <div class="htc__loadmore__btn">
+          <a href="{% url 'awardsapp:awards' %}">Ver más Premios</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

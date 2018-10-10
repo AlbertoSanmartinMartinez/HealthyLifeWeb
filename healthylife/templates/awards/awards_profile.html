@@ -1,0 +1,28 @@
+{% extends "awards.html" %}
+{% load static %}
+
+{% block awards_profile %}
+
+  <section class="htc__new__product bg__white ptb--100">
+    <div class="container">
+      <div class="row">
+        <div class="new__product__wrap clearfix">
+          {% for award in awards %}
+            <div class="award_register">
+              <div class="thumbnail_photo">
+              </div>
+              <div class="award_content">
+                <h2>{{ award.title }}</h2>
+                <p>{{ award.content_type }}</p>
+                <p>{{ award.description }}</p>
+                <p>{{ award.amount }}</p>
+                <a href="#">autor</a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+  </section>
+
+{% endblock %}

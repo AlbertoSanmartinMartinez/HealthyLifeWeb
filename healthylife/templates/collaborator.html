@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block collaborator %}
+
+<p>Información del Colaborador</p>
+    <hr>
+    {{ collaborator }}<br>
+    {{ collaborator.company }}<br>
+    {{ collaborator.education }}<br>
+    {{ collaborator.extract }}<br>
+    <img src="{{ collaborator.collaborator_image.url }}">
+
+{% endblock %}

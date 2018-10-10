@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block awards %}
+
+<!-- Awards Breadcrumbs Area -->
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({% static 'images/1_award_banner.jpg' %}) no-repeat scroll center center / cover ;">
+  <div class="ht__bradcaump__wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="bradcaump__inner text-center">
+            <h2 class="bradcaump-title">Premios</h2>
+            <nav class="bradcaump-inner">
+              <a class="breadcrumb-item" href="index.html"></a>
+              <span class="brd-separetor">/</span>
+              <span class="breadcrumb-item active"></span>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Start Awards Features Area -->
+<section class="htc__product__area shop__page ptb--130 bg__white">
+  <div class="container">
+    <div class="htc__product__container">
+
+      <!-- Start Feature 1 -->
+      <div class="row">
+      <div class="col-md-5 col-lg-5 col-sm-6 col-xs-12">
+        <div class="feature foo">
+          <div class="feature__thumb">
+            <a href="product-details.html">
+              <img src="{% static 'images/1_award_feature.png' %}" alt="feature product">
+            </a>
+          </div>
+          <!--<div class="feature__details">
+            <h4><a href="product-details.html">New Products</a></h4>
+            <div class="feature__btn">
+              <a class="htc__btn shop__now__btn" href="cart.html">shop now</a>
+            </div>
+          </div>-->
+        </div>
+      </div>
+
+      <div class="col-md-7 col-lg-7 col-sm-6 col-xs-12">
+        <div class="row">
+
+          <!-- Start Feature 2 -->
+          <div class="col-md-12 col-sm-12 col-xs-12 xmt-30">
+            <div class="feature foo">
+              <div class="feature__thumb">
+                <a href="product-details.html">
+                  <img src="{% static 'images/4_award_feature.jpg' %}" alt="feature product">
+                </a>
+              </div>
+              <!--<div class="feature__details">
+                <h4><a href="product-details.html">Latest Lamp</a></h4>
+                <div class="feature__btn">
+                  <a class="htc__btn shop__now__btn" href="cart.html">shop now</a>
+                </div>
+              </div>-->
+            </div>
+          </div>
+
+          <!-- Start Feature 3 -->
+          <div class="col-md-7 mt--30 col-sm-12 col-xs-12 xmt-30">
+            <div class="feature foo">
+              <div class="feature__thumb">
+                <a href="product-details.html">
+                  <img src="{% static 'images/2_award_feature.jpg' %}" alt="feature product">
+                </a>
+              </div>
+              <!--<div class="feature__details">
+                <h4><a href="product-details.html">New Clock</a></h4>
+                <div class="feature__btn">
+                  <a class="htc__btn shop__now__btn" href="cart.html">shop now</a>
+                </div>
+              </div>-->
+            </div>
+          </div>
+
+          <!-- Start Feature 4 -->
+          <div class="col-md-5 mt--30 hidden-sm hidden-xs">
+            <div class="feature text__pos--top foo">
+              <div class="feature__thumb--2">
+                <a href="product-details.html">
+                  <img src="{% static 'images/3_award_feature.jpg' %}" alt="feature product">
+                </a>
+              </div>
+              <!--<div class="feature__details">
+                <h4><a href="product-details.html">Bag Collection</a></h4>
+                <div class="feature__btn">
+                  <a class="htc__btn shop__now__btn" href="cart.html">shop now</a>
+                </div>
+              </div>-->
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  {% block award_detail %}
+  {% endblock %}
+
+  {% block awards_profile %}
+  {% endblock %}
+
+{% endblock %}

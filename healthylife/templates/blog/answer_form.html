@@ -1,0 +1,46 @@
+{% load static %}
+{% load blog_tags %}
+
+<div class="contact-form-wrap">
+  <form method="POST" action="{% url 'blog:add_comment' post_slug=post.slug %}">
+    {% csrf_token %}
+
+    <div class="single-contact-form">
+      <div class="contact-box subject">
+        {{ comment_form.name }}
+      </div>
+    </div>
+    <div class="single-contact-form">
+      <div class="contact-box subject">
+        {{ comment_form.email }}
+      </div>
+    </div>
+    <div class="single-contact-form">
+      <div class="contact-box subject">
+        {{ comment_form.title }}
+      </div>
+    </div>
+    <div class="single-contact-form">
+      <div class="contact-box subject">
+        {{ comment_form.content }}
+      </div>
+    </div>
+
+    <!--<div class="single-contact-form">
+      <div class="contact-box subject">
+        {{ comment_form.comment_parent_id }}
+      </div>
+    </div>-->
+
+    <br>
+    <br>
+
+    <div class="contact-btn">
+      <input id="comment_parent_id" type="hidden" name="comment_parent_id" value="">
+      <input type="submit" class="fv-btn" value="Responder">
+      <br>
+      <input size="8" class="fv-btn blog__answer__reply__close" value="Cancelar">
+      <!--<a href="#comments" class="fv-btn blog__answer__reply__close">Cancelar</a>-->
+    </div>
+  </form>
+</div>

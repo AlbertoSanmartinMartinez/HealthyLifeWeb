@@ -1,0 +1,50 @@
+
+<!-- Start Profiel Icon Menu Area -->
+<div class="profile">
+  <div class="profile__inner">
+
+    <div class="offsetmenu__close__btn">
+      <a href="#"><i class="zmdi zmdi-close"></i></a>
+    </div>
+
+      <ul class="profile__btn">
+        {% if not user.is_authenticated %}
+          <li>
+            <a href="{% url 'custom_login' %}">Acceder</a>
+          </li>
+        {% else %}
+          <li>
+            <a href="{% url 'profile' username=user.username %}">{{ user.username }}</a>
+          </li>
+          {% if user.is_staff %}
+            <li>
+              <a href="{% url 'collaborator_profile' username=user.username %}">Colaborador</a>
+            </li>
+            <li>
+              <a href="/administracion" target="_blank">Administracion</a>
+            </li>
+          {% endif %}
+          <!--<li>
+            <a href="{% url 'sport_profile' username=user.username %}">Deporte</a>
+          </li>
+          <li>
+            <a href="{% url 'nutrition_profile' username=user.username %}">Nutricion</a>
+          </li>
+          <li>
+            <a href="{% url 'health_profile' username=user.username %}">Salud</a>
+          </li>
+          <li>
+            <a href="{% url 'awardsapp:awards_profile' username=user.username %}">Premios</a>
+          </li>
+          <li>
+            <a href="{% url 'shop:ships' username=user.username %}">Pedidos</a>
+          </li>-->
+          <!--<li>
+            <a href="{% url 'calendar:month_calendar' username=user.username year=current_year month=current_month %}">Calendario</a>
+          </li>-->
+          <li class="profile__checkout"><a href="{% url 'logout' %}">Desconectar</a></li>
+        {% endif %}
+      </ul>
+
+  </div>
+</div>

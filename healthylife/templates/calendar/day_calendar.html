@@ -1,0 +1,39 @@
+{% extends "calendar.html" %}
+{% load static %}
+{% load calendar_tags %}
+
+{% block day %}
+
+<!-- Start Day Calendar Area -->
+      <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+        <div class="htc__contact__container">
+
+      <div class="monthly-header">
+        <!--<div class="monthly-header-title">
+          <div class="monthly-header-title-date">-->
+            {{ day_name }} {{ day }} de
+            <a href="{% url 'calendar:month_calendar' username=request.user.username year=year month=month %}">{{ month_name }}</a>
+            del {{ year }}
+          <!--</div>
+        </div>-->
+        <a href="{% url 'calendar:day_calendar' username=request.user.username year=year month=month day=previous_day %}" class="monthly-prev"></a>
+        <a href="{% url 'calendar:day_calendar' username=request.user.username year=year month=month day=next_day %}" class="monthly-next"></a>
+      </div>
+      <div class="monthly-day-wrap">
+        <div class="monthly-week">
+      {% getEvents request.user.id year month day type=None as events %}
+      {% for event in events %}
+        <li>
+          <p>
+            <a href="{% url 'calendar:detail_event' event.slug %}">{{ event.title }}</a>
+          </p>
+        </li>
+      {% endfor %}
+    </div>
+    </div>
+
+    </div>
+    </div>
+
+
+{% endblock %}

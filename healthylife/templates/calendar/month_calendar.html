@@ -1,0 +1,66 @@
+{% extends "calendar.html" %}
+{% load static %}
+{% load calendar_tags %}
+
+{% block month %}
+
+<!-- Start Month Calendar Area -->
+
+      <div class="row">
+      <div class="monthly-header">
+        <!--<div class="monthly-header-title">-->
+          {{ month_name }} del {{ year }}
+        <!--</div>-->
+        <a href="{% url 'calendar:month_calendar' username=request.user.username year=year month=previous_month %}" class="monthly-prev"></a>
+        <a href="{% url 'calendar:month_calendar' username=request.user.username year=year month=next_month %}" class="monthly-next"></a>
+      </div>
+      <div class="monthly-day-title-wrap">
+        <div>lun.</div>
+        <div>mar.</div>
+        <div>mié.</div>
+        <div>jue.</div>
+        <div>vie.</div>
+        <div>sáb.</div>
+        <div>dom.</div>
+      </div>
+
+      <div class="monthly-day-wrap">
+        <div class="monthly-week">
+        {% for day in days %}
+          {% if day > 0 %}
+            <div class="m-d monthly-day monthly-day-event">
+              <div class="monthly-day-number">
+                <a href="{% url 'calendar:day_calendar' username=request.user.username year=year month=month day=day %}">{{ day }}</a>
+              </div>
+              <div class="monthly-indicator-wrap">
+                <!-- lista de eventos -->
+                {% isToday year=year month=month day=day as today %}
+                {% if today %}
+                  <p>Hoy</p>
+                {% endif %}
+                <ul>
+                {% getEvents request.user.id year month day type=None as events %}
+                {% for event in events %}
+                  <li>
+                    <p>
+                      <a href="{% url 'calendar:detail_event' event.slug %}">{{ event.title }}</a>
+                    </p>
+                  </li>
+                {% endfor %}
+              </ul>
+              </div>
+            </div>
+          {% else %}
+            <div class="m-d monthly-day-blank"></div>
+          {% endif %}
+          {% isMultipleBiggerThanZero number=forloop.counter as multipleBiggerThanZero %}
+          {% if multipleBiggerThanZero %}
+            </div>
+            <div class="monthly-week">
+          {% endif %}
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

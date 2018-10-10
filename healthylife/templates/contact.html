@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contact %}
+
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({% static 'images/contact-banner.jpg' %}) no-repeat scroll center center / cover ;">
+            <div class="ht__bradcaump__wrap">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="bradcaump__inner text-center">
+                                <h2 class="bradcaump-title">Contacto</h2>
+                                <!--<nav class="bradcaump-inner">
+                                  <a class="breadcrumb-item" href="index.html">Home</a>
+                                  <span class="brd-separetor">/</span>
+                                  <span class="breadcrumb-item active">Contact US</span>
+                                </nav>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<section class="htc__contact__area ptb--120 bg__white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                        <div class="htc__contact__container">
+
+                            <!-- Contact Info Area -->
+                            <div class="htc__contact__address">
+                                <h2 class="contact__title">Información de Contacto</h2>
+
+                                <!-- Address Info Adress -->
+                                <div class="contact__address__inner">
+                                    <div class="single__contact__address">
+                                        <div class="contact__icon">
+                                            <span class="ti-location-pin"></span>
+                                        </div>
+                                        <div class="contact__details">
+                                            <p>Dirección : <br><a target="_blank" href="https://www.google.com/maps/place/Calle+el+Terrero,+5,+22300+Barbastro,+Huesca/@42.0336542,0.1211818,17z/data=!3m1!4b1!4m5!3m4!1s0x12a784e42f2a9aa3:0xe852b89af3f133d9!8m2!3d42.0336502!4d0.1233705">Terrero 5, Barbastro</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Phone Info Adress -->
+                                <div class="contact__address__inner">
+                                    <div class="single__contact__address">
+                                        <div class="contact__icon">
+                                            <span class="ti-mobile"></span>
+                                        </div>
+                                        <div class="contact__details">
+                                            <p> Teléfono : <br><a target="_blank" href="tel:649871014">+34 649 871 014</a></p>
+                                        </div>
+                                    </div>
+                                  </div>
+
+                                  <!-- Email Info Adress -->
+                                  <div class="contact__address__inner">
+                                    <div class="single__contact__address">
+                                        <div class="contact__icon">
+                                            <span class="ti-email"></span>
+                                        </div>
+                                        <div class="contact__details">
+                                            <p> Mail :<br><a target="_blank" href="mailto:info@barbastrosemueve.es">info@barbastrosemueve.es</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Contact Form Area -->
+                            <div class="contact-form-wrap">
+                                <div class="contact-title">
+                                    <h2 class="contact__title">Mándanos un Email</h2>
+                                </div>
+                                <form id="contact-form" action="" method="POST">
+                                  {% csrf_token %}
+                                    <div class="single-contact-form">
+                                        <div class="contact-box subject">
+                                            <!--<input type="text" name="name" placeholder="Your Nme*">
+                                            <input type="email" name="email" placeholder="Mail*">-->
+                                            {{ contact_form.name }}
+                                        </div>
+                                    </div>
+                                    <div class="single-contact-form">
+                                        <div class="contact-box subject">
+                                            <!--<input type="text" name="subject" placeholder="Subject*">-->
+                                            {{ contact_form.email }}
+                                        </div>
+                                    </div>
+                                    <div class="single-contact-form">
+                                        <div class="contact-box message">
+                                            {{ contact_form.message }}
+                                        </div>
+                                    </div>
+                                    <div class="contact-btn">
+                                        <input type="submit" class="fv-btn" value="Enviar">
+                                    </div>
+                                </form>
+                            </div>
+                            <!--<div class="form-output">
+                                <p class="form-messege"></p>
+                            </div>-->
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 smt-30 xmt-30">
+                        <div class="map-contacts">
+                            <div id="googleMap">
+                              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7381.635953121556!2d0.1216252939770822!3d42.03614933209949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a784e28162b5b3%3A0x76c5a97a121b0a8!2s22300+Barbastro%2C+Huesca!5e0!3m2!1ses!2ses!4v1538644526756" width="570" height="633" frameborder="0" style="border:0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{% endblock %}

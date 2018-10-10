@@ -1,0 +1,50 @@
+{% load static %}
+{% load calendar_tags %}
+
+<!-- Add Event Button -->
+<div class="row">
+  <div class="col-md-12">
+    <div class="filter__menu__container">
+      <div class="product__menu">
+        <button data-filter="*"  class="is-checked">Todo</button>
+        <button data-filter=".cat--1">Deporte</button>
+        <button data-filter=".cat--2">Nutrición</button>
+        <button data-filter=".cat--3">Salud</button>
+      </div>
+      <div class="filter__box">
+        <a class="calendar__filter__menu" href="#"><span class="ti-search"></span> Añadir Evento</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Start Add Event Form Area -->
+<div class="calendar__filter__wrap">
+  <div class="filter__cart">
+    <div class="filter__cart__inner">
+
+      <!-- Filter Title-->
+      <div class="calendar__filter__menu__close__btn">
+        <a href="#"><i class="zmdi zmdi-close"></i></a>
+      </div>
+
+      <div class="filter__content">
+
+        <form action="{% url 'calendar:add_event' %}" method="POST">
+          {% csrf_token %}
+
+          {{ event_form.as_p }}
+          
+          <!-- Filter Button -->
+          <div class="fiter__content__inner">
+            <div class="single__filter">
+              <div class="contact-btn">
+                <input type="submit" class="fv-btn" value="Añadir">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

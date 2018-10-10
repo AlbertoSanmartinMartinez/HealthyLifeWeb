@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load cropping thumbnail %}
+
+{% block extra_head %}
+  {{ form.media }}
+{% endblock %}
+
+{% block profile %}
+
+<!-- Profile Breadcrums Area -->
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({% static 'images/profile_banner_1.jpg' %}) no-repeat scroll center center / cover ;">
+  <div class="ht__bradcaump__wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="bradcaump__inner text-center">
+            <h2 class="bradcaump-title">Perfil de Usuario</h2>
+            <!--<nav class="bradcaump-inner">
+              <a class="breadcrumb-item" href="index.html">Home</a>
+              <span class="brd-separetor">/</span>
+              <span class="breadcrumb-item active">Contact US</span>
+            </nav>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Profile Information Area -->
+<section class="htc__contact__area ptb--120 bg__white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+        <div class="htc__contact__container">
+
+          <!-- User Information Area -->
+          <div class="contact-form-wrap">
+            <div class="contact-title">
+              <h2 class="contact__title">Información personal</h2>
+            </div>
+
+            <!--<img src="{{ user_profile.profile_image.url }}"/>-->
+            <div class="team__wrap clearfix mt--60">
+              <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+                <div class="team foo">
+                  <div class="team__thumb">
+                    <a href="">
+                      <!--<img src="{{ user_profile.profile_image.url }}"/>-->
+                      <img src="{% cropped_thumbnail user_profile 'cropping' %}"/>
+                    </a>
+                  </div>
+                  <!--<div class="team__hover__info">
+                    <div class="team__hover__action">
+                      <h2><a href="#">Beatriz González</a></h2>
+                      <ul class="social__icon">
+                        <li><a href="https://twitter.com/devitemsllc" target="_blank"><i class="zmdi zmdi-twitter"></i></a></li>
+                        <li><a href="https://www.instagram.com/devitems/" target="_blank"><i class="zmdi zmdi-instagram"></i></a></li>
+                        <li><a href="https://www.facebook.com/devitems/?ref=bookmarks" target="_blank"><i class="zmdi zmdi-facebook"></i></a></li>
+                        <li><a href="https://plus.google.com/" target="_blank"><i class="zmdi zmdi-google-plus"></i></a></li>
+                      </ul>
+                    </div>
+                  </div>-->
+                </div>
+              </div>
+            </div>
+
+            <form method="POST" action="{% url 'profile' username=user.username %}" enctype="multipart/form-data">
+              {% csrf_token %}
+
+              <!-- User Profile Form Area -->
+              <div class="single-contact-form">
+                  {{ user_profile_form.profile_image }}
+                  {{ user_profile_form.profile_image.help_text }}
+                  {{ user_profile_form.profile_image.errors }}
+              </div>
+              <div class="single-contact-form">
+                <div class="contact-box subject">
+                  {{ user.first_name }}
+                  <hr>
+                </div>
+              </div>
+              <div class="single-contact-form">
+                <div class="contact-box subject">
+                  {{ user.last_name }}
+                  <hr>
+                </div>
+              </div>
+              <div class="single-contact-form">
+                <div class="contact-box subject">
+                  {{ user_profile_form.bio }}
+                </div>
+              </div>
+
+              <div class="single-contact-form">
+                <div class="contact-box subject">
+                  {{ user_profile_form.phone }}
+                </div>
+              </div>
+
+              <br>
+
+              <div class="contact-btn">
+                <input type="submit" name="user_profile" class="fv-btn" value="Actualizar">
+              </div>
+            </form>
+          </div>
+
+          <br>
+          <br>
+
+          <!-- User Bank Information Form -->
+          <!--<div class="contact-form-wrap">
+              <div class="contact-title">
+                <h2 class="contact__title">Información bancaria</h2>
+              </div>
+
+              <form method="POST" action="{% url 'profile' username=user.username %}">
+                {% csrf_token %}
+
+                <div class="single-contact-form">
+                  <div class="contact-box subject">
+                    {{ bank_information_form.bank_name }}
+                  </div>
+                </div>
+                <div class="single-contact-form">
+                  <div class="contact-box subject">
+                    {{ bank_information_form.account }}
+                  </div>
+                </div>
+                <div class="single-contact-form">
+                  <div class="contact-box subject">
+                    {{ bank_information_form.month }}
+                  </div>
+                </div>
+                <div class="single-contact-form">
+                  <div class="contact-box subject">
+                    {{ bank_information_form.year }}
+                  </div>
+                </div>
+                <div class="single-contact-form">
+                  <div class="contact-box subject">
+                    {{ bank_information_form.security_code }}
+                  </div>
+                </div>
+                <br>
+                <div class="contact-btn">
+                  <input type="submit" name="bank_information" class="fv-btn" value="Actualizar">
+                </div>
+              </form>
+            </div>
+
+            <br>
+            <br>-->
+
+            <!-- User Address Form -->
+            <!--<div class="contact-form-wrap">
+              <div class="contact-title">
+                <h2 class="contact__title">Información de envío</h2>
+              </div>
+
+              <form method="POST" action="{% url 'profile' username=user.username %}">
+                {% csrf_token %}
+
+                <div class="single-contact-form">
+                  <div class="contact-box subject">
+                    {{ address_form.address_name }}
+                  </div>
+                </div>
+                <div class="single-contact-form">
+                  <div class="contact-box subject">
+                    {{ address_form.city }}
+                  </div>
+                </div>
+                <div class="single-contact-form">
+                  <div class="contact-box subject">
+                    {{ address_form.postal_code }}
+                  </div>
+                </div>
+                <div class="single-contact-form">
+                  <div class="contact-box subject">
+                    {{ address_form.street }}
+                  </div>
+                </div>
+                <div class="single-contact-form">
+                  <div class="contact-box subject">
+                    {{ address_form.number }}
+                  </div>
+                </div>
+                <div class="single-contact-form">
+                  <div class="contact-box subject">
+                    {{ address_form.floor }}
+                  </div>
+                </div>
+                <div class="single-contact-form">
+                  <div class="contact-box subject">
+                    {{ address_form.door }}
+                  </div>
+                </div>
+                <br>
+                <div class="contact-btn">
+                  <input type="submit" name="address" class="fv-btn" value="Actualizar">
+                </div>
+              </form>
+            </div>-->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block api %}
+
+  <p>
+  Blog API<br>
+  <a href="{% url 'api:post-list' %}">Posts</a><br>
+  <a href="{% url 'api:category-list' %}">Blog Categories</a><br>
+  <a href="{% url 'api:comment-list' %}">Comments</a><br>
+  <a href="{% url 'api:tag-list' %}">Blog Tags</a><br>
+  Shop API<br>
+  <a href="{% url 'api:product-list' %}">Products</a><br>
+  <a href="{% url 'api:category-list' %}">Shop Categories</a><br>
+  <a href="{% url 'api:review-list' %}">Reviews</a><br>
+  <a href="{% url 'api:tag-list' %}">Tags</a><br>
+  </p>
+
+{% endblock %}

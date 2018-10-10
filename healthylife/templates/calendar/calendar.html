@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block calendar %}
+
+<!-- Calendar Breadcrumbs Area -->
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({% static 'images/calendar_banner_1.jpg' %}) no-repeat scroll center center / cover ;">
+  <div class="ht__bradcaump__wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="bradcaump__inner text-center">
+            <h2 class="bradcaump-title">Shop Page</h2>
+            <nav class="bradcaump-inner">
+              <a class="breadcrumb-item" href="index.html">Home</a>
+              <span class="brd-separetor">/</span>
+              <span class="breadcrumb-item active">Shop Page</span>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Start Calendar Area -->
+<section class="htc__contact__area ptb--120 bg__white">
+  <div class="container">
+    <!--<div class="htc__product__container">-->
+
+      {% include 'add_event.html' %}
+
+      {% block month %}
+      {% endblock %}
+
+      <div class="row">
+      {% block day %}
+      {% endblock %}
+
+      {% block event %}
+      {% endblock %}
+      </div>
+
+    <!--</div>-->
+  </div>
+</section>
+
+{% endblock %}

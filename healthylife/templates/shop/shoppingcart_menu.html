@@ -1,0 +1,54 @@
+
+<!-- Start Shopping Cart Icon Menu Area -->
+<div class="shopping__cart">
+  <div class="shopping__cart__inner">
+
+    <div class="offsetmenu__close__btn">
+      <a href="#"><i class="zmdi zmdi-close"></i></a>
+    </div>
+
+    {% if shoppingcart|length > 0 %}
+      <div class="shp__cart__wrap">
+        {% for item in shoppingcart %}
+          <div class="shp__single__product">
+            <div class="shp__pro__thumb">
+              <a href="#">
+                <img src="{{ item.product.image.url }}" alt="product images">
+              </a>
+            </div>
+            <div class="shp__pro__details">
+              <form method='POST' action="{% url 'shop:shoppingcart_add' product_id=item.product.id %}">
+                {% csrf_token %}
+                <h2><a href="{% url 'shop:product_detail' product_slug=product.slug %}">{{ item.product.name }}</a></h2>
+                {{ item.product.price }} €
+                {{ item.shoppingcart_form.quantity }}
+                <input type="submit" value="Aactualizar">
+              </div>
+              <!--<div class="remove__btn">
+                <a href="#" title="Remove this item">Actualizar</a>
+              </div>-->
+            </div>
+        {% endfor %}
+      </div>
+
+      <ul class="shoping__total">
+        <li class="subtotal">Subtotal:</li>
+        <li class="total__price">$130.00</li>
+      </ul>
+
+      <ul class="shopping__btn">
+        <li><a href="{% url 'shop:shoppingcart_detail' %}">Ver Carrito</a></li>
+        <!--<li class="shp__checkout"><a href="checkout.html">Checkout</a></li>-->
+      </ul>
+
+    {% else %}
+
+      <p>Tu carrito esta vacio.</p>
+      <ul class="shopping__btn">
+        <li>
+          <a href="{% url 'shop:product_list' %}">Visita la Tienda</a>
+        </li>
+      </ul>
+    {% endif %}
+  </div>
+</div>

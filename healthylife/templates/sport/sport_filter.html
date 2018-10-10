@@ -1,0 +1,59 @@
+{% load static %}
+
+<!-- Sport Filter Button -->
+<div class="row">
+  <div class="col-md-12">
+    <div class="filter__menu__container">
+      <div class="product__menu">
+      </div>
+      <div class="filter__box">
+        <a class="sport__filter__menu" href="#"><span class="ti-search"></span> Buscar</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Start Sport Filter Area -->
+<div class="sport__filter__wrap">
+  <div class="filter__cart">
+    <div class="filter__cart__inner">
+
+      <div class="filter__menu__close__btn">
+        <a href="#"><i class="zmdi zmdi-close"></i></a>
+      </div>
+
+      <!-- Start Single Filter Area -->
+      <div class="filter__content">
+
+        <form action="{% url 'sportapp:search_sport' %}" method="POST">
+          {% csrf_token %}
+
+        <!-- Single Filter -->
+        <div class="fiter__content__inner">
+          <div class="single__filter">
+            <h2>Buscar</h2>
+            {{ sport_filter_form.name }}
+          </div>
+        </div>
+
+        <!-- Single Filter -->
+        <div class="fiter__content__inner">
+          <div class="single__filter">
+            <h2>Tipo</h2>
+            {{ sport_filter_form.type }}
+          </div>
+        </div>
+
+        <!-- Filter Button -->
+        <div class="fiter__content__inner">
+          <div class="single__filter">
+            <div class="contact-btn">
+              <input type="submit" class="fv-btn" value="Filtrar">
+            </div>
+          </div>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>

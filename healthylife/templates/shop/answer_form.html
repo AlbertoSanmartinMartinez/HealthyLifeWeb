@@ -1,0 +1,35 @@
+{% load static %}
+
+<form id="review-form" method="POST" action="{% url 'shop:add_review' product_slug=product.slug %}">
+  {% csrf_token %}
+  <!--<div class="single-review-form">-->
+  <div class="single-contact-form">
+    <div class="contact-box subject">
+      {{ review_form.mark }}
+    </div>
+  </div>
+  <div class="single-contact-form">
+    <div class="contact-box subject">
+      {{ review_form.name }}
+    </div>
+  </div>
+  <div class="single-contact-form">
+    <div class="contact-box subject">
+      {{ review_form.email }}
+    </div>
+  </div>
+  <div class="single-contact-form">
+    <div class="contact-box subject">
+      {{ review_form.title }}
+    </div>
+  </div>
+  <div class="single-contact-form">
+    <div class="contact-box subject">
+      {{ review_form.content }}
+    </div>
+  </div>
+  <div class="contact__btn">
+    <input type="submit" class="fv-btn" value="Opinar">
+    <input type="hidden" name="review_parent_id" value="{{ review.id }}">
+  </div>
+</form>

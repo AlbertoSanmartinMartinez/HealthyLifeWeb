@@ -1,0 +1,326 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load shop_tags %}
+
+{% block product_detail %}
+
+<!-- Breadcrumbs Area -->
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({% static 'images/bg/2.jpg' %}) no-repeat scroll center center / cover ;">
+	<div class="ht__bradcaump__wrap">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="bradcaump__inner text-center">
+						<h2 class="bradcaump-title">Shop Page</h2>
+						<nav class="bradcaump-inner">
+							<a class="breadcrumb-item" href="index.html">Home</a>
+							<span class="brd-separetor">/</span>
+							<span class="breadcrumb-item active">Shop Page</span>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Start Product Detail Area -->
+<section class="htc__product__details pt--120 pb--100 bg__white">
+            <div class="container">
+                <div class="row">
+
+										<!-- Start Gallery Area -->
+                    <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                        <div class="product__details__container">
+                            <!-- Start Small images -->
+                            <ul class="product__small__images" role="tablist">
+                                <li role="presentation" class="pot-small-img active">
+                                    <a href="#img-tab-1" role="tab" data-toggle="tab">
+                                        <img src="images/product-details/small-img/1.jpg" alt="small-image">
+                                    </a>
+                                </li>
+                                <li role="presentation" class="pot-small-img">
+                                    <a href="#img-tab-2" role="tab" data-toggle="tab">
+                                        <img src="images/product-details/small-img/2.jpg" alt="small-image">
+                                    </a>
+                                </li>
+                                <li role="presentation" class="pot-small-img hidden-xs">
+                                    <a href="#img-tab-3" role="tab" data-toggle="tab">
+                                        <img src="images/product-details/small-img/3.jpg" alt="small-image">
+                                    </a>
+                                </li>
+                                <li role="presentation" class="pot-small-img hidden-xs hidden-sm">
+                                    <a href="#img-tab-4" role="tab" data-toggle="tab">
+                                        <img src="images/product-details/small-img/4.jpg" alt="small-image">
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- End Small images -->
+                            <div class="product__big__images">
+                                <div class="portfolio-full-image tab-content">
+                                    <div role="tabpanel" class="tab-pane fade in active" id="img-tab-1">
+                                        <img src="images/product-details/big-img/1.jpg" alt="full-image">
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="img-tab-2">
+                                        <img src="images/product-details/big-img/1.jpg" alt="full-image">
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="img-tab-3">
+                                        <img src="images/product-details/big-img/1.jpg" alt="full-image">
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="img-tab-4">
+                                        <img src="images/product-details/big-img/1.jpg" alt="full-image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+										<!-- Start Information Area -->
+                    <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 smt-30 xmt-30">
+                        <div class="htc__product__details__inner">
+                            <div class="pro__detl__title">
+                                <h2>{{ product.name }}</h2>
+                            </div>
+                            <div class="pro__dtl__rating">
+                                <ul class="pro__rating">
+                                    <li><span class="ti-star"></span></li>
+                                    <li><span class="ti-star"></span></li>
+                                    <li><span class="ti-star"></span></li>
+                                    <li><span class="ti-star"></span></li>
+                                    <li><span class="ti-star"></span></li>
+                                </ul>
+                                <span class="rat__qun">(Based on 0 Ratings)</span>
+                            </div>
+                            <div class="pro__details">
+                                <p>{{ product.description }}</p>
+                            </div>
+                            <ul class="pro__dtl__prize">
+                                <!--<li class="old__prize">$15.21</li>-->
+                                <li>{{ product.price }} €</li>
+                            </ul>
+
+														<!-- Color Area -->
+                            <div class="pro__dtl__color">
+                                <h2 class="title__5">Color</h2>
+                                <ul class="pro__choose__color">
+                                    <li class="red"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
+                                    <li class="blue"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
+                                    <li class="perpal"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
+                                    <li class="yellow"><a href="#"><i class="zmdi zmdi-circle"></i></a></li>
+                                </ul>
+                            </div>
+
+														<!-- Size Area -->
+                            <div class="pro__dtl__size">
+                                <h2 class="title__5">Talla</h2>
+                                <ul class="pro__choose__size">
+                                    <li><a href="#">xl</a></li>
+                                    <li><a href="#">m</a></li>
+                                    <li><a href="#">ml</a></li>
+                                    <li><a href="#">lm</a></li>
+                                    <li><a href="#">xxl</a></li>
+                                </ul>
+                            </div>
+
+														<!-- ShoppingCart Form Area -->
+                            <div class="product-action-wrap">
+                                <div class="prodict-statas"><span>Cantidad:</span></div>
+                                <div class="product-quantity">
+                                    <form method='POST' action="{% url 'shop:shoppingcart_add' product_id=product.id %}">
+																			{% csrf_token %}
+                                        <!--<div class="product-quantity">
+                                            <div class="cart-plus-minus">
+                                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="02">-->
+																								{{ shoppingcart_form.quantity }}
+                                            <!--</div>
+                                        </div>-->
+
+                                </div>
+                            </div>
+                            <ul class="pro__dtl__btn">
+                                <!--<li class="buy__now__btn"><a href="{% url 'shop:shoppingcart_add' product_id=product.id %}">Añadir al Carrito</a></li>-->
+																<li class="buy__now__btn"><input type="submit" value="Añadir al Carrito"></li>
+                                <!--<li><a href="#"><span class="ti-heart"></span></a></li>-->
+                                <!--<li><a href="#"><span class="ti-email"></span></a></li>-->
+                            </ul>
+													</form>
+														<!-- Social Share Area -->
+                            <div class="pro__social__share">
+                                <h2>Compartir: </h2>
+                                <ul class="pro__soaial__link">
+                                    <li><a href="https://twitter.com/BarbastroSMueve" target="_blank"><i class="zmdi zmdi-twitter"></i></a></li>
+                                    <li><a href="https://www.instagram.com/barbastrosemueve/" target="_blank"><i class="zmdi zmdi-instagram"></i></a></li>
+                                    <li><a href="https://www.facebook.com/BarbastroSeMueve/" target="_blank"><i class="zmdi zmdi-facebook"></i></a></li>
+																		<li><a href="https://www.facebook.com/BarbastroSeMueve/" target="_blank"><i class="zmdi zmdi-google"></i></a></li>
+								                    <li><a href="https://www.facebook.com/BarbastroSeMueve/" target="_blank"><i class="zmdi zmdi-email"></i></a></li>
+								                    <li><a href="https://www.facebook.com/BarbastroSeMueve/" target="_blank"><i class="zmdi zmdi-linkedin"></i></a></li>
+                                    <!--<li><a href="https://plus.google.com/" target="_blank"><i class="zmdi zmdi-google-plus"></i></a></li>-->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+				<!-- Start Product Tab Area-->
+				        <section class="htc__product__details__tab bg__white pb--120">
+				            <div class="container">
+
+												<!-- Start Tab Menu Area -->
+				                <div class="row">
+				                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+				                        <ul class="product__deatils__tab mb--60" role="tablist">
+				                            <li role="presentation" class="active">
+				                                <a href="#description" role="tab" data-toggle="tab">Descripción</a>
+				                            </li>
+				                            <!--<li role="presentation">
+				                                <a href="#sheet" role="tab" data-toggle="tab">Data sheet</a>
+				                            </li>-->
+				                            <li role="presentation">
+				                                <a href="#reviews" role="tab" data-toggle="tab">Opiniones</a>
+				                            </li>
+				                        </ul>
+				                    </div>
+				                </div>
+
+												<!-- Start Tab Content Area -->
+				                <div class="row">
+				                    <div class="col-md-12">
+				                        <div class="product__details__tab__content">
+
+				                            <!-- Start Information Tab Content Area -->
+				                            <div role="tabpanel" id="description" class="product__tab__content fade in active">
+				                                <div class="product__description__wrap">
+				                                    <div class="product__desc">
+				                                        <h2 class="title__6">Detalles</h2>
+				                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis noexercit ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id.</p>
+				                                    </div>
+				                                    <div class="pro__feature">
+				                                        <h2 class="title__6">Características</h2>
+				                                        <ul class="feature__list">
+				                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Duis aute irure dolor in reprehenderit in voluptate velit esse</a></li>
+				                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Irure dolor in reprehenderit in voluptate velit esse</a></li>
+				                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Sed do eiusmod tempor incididunt ut labore et </a></li>
+				                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Nisi ut aliquip ex ea commodo consequat.</a></li>
+				                                        </ul>
+				                                    </div>
+				                                </div>
+				                            </div>
+
+				                            <!-- Start Single Tab Content Area -->
+				                            <!--<div role="tabpanel" id="sheet" class="product__tab__content fade">
+				                                <div class="pro__feature">
+				                                        <h2 class="title__6">Data sheet</h2>
+				                                        <ul class="feature__list">
+				                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Duis aute irure dolor in reprehenderit in voluptate velit esse</a></li>
+				                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Irure dolor in reprehenderit in voluptate velit esse</a></li>
+				                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Irure dolor in reprehenderit in voluptate velit esse</a></li>
+				                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Sed do eiusmod tempor incididunt ut labore et </a></li>
+				                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Sed do eiusmod tempor incididunt ut labore et </a></li>
+				                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Nisi ut aliquip ex ea commodo consequat.</a></li>
+				                                            <li><a href="#"><i class="zmdi zmdi-play-circle"></i>Nisi ut aliquip ex ea commodo consequat.</a></li>
+				                                        </ul>
+				                                    </div>
+				                            </div>-->
+
+				                            <!-- Start Review Tab Content Area -->
+				                            <div role="tabpanel" id="reviews" class="product__tab__content fade">
+				                                <div class="review__address__inner">
+
+																					{% if reviews %}
+																						<h2 class="section-title-2">OPINIONES ({{ num_reviews }})</h2>
+
+				                                    <!-- Start Review -->
+																						{% for review in reviews %}
+				                                    <div class="pro__review">
+				                                        <div class="review__thumb">
+																									{% get_user_image username=review.author as user_profile %}
+																										{% if user_profile %}
+																											<img src="{{ user_profile.profile_image.url }}" alt="comment images">
+																										{% else %}
+																											<img src="{% static 'images/user_default_image.jpg' %}" alt="comment images">
+																										{% endif %}
+				                                        </div>
+				                                        <div class="review__details">
+				                                            <div class="review__info">
+				                                                <h4><a>{{ review.title }}</a></h4>
+				                                                <ul class="rating">
+				                                                    <li><i class="zmdi zmdi-star"></i></li>
+				                                                    <li><i class="zmdi zmdi-star"></i></li>
+				                                                    <li><i class="zmdi zmdi-star"></i></li>
+																														<li><i class="zmdi zmdi-star"></i></li>
+				                                                    <li><i class="zmdi zmdi-star-half"></i></li>
+				                                                </ul>
+																												<h4><a href="#">{{ review.mark }}</a></h4>
+				                                            </div>
+				                                            <div class="review__date">
+				                                                <span>{{ review.author }} | {{ review.created_date }}</span>
+				                                            </div>
+				                                            <p>{{ review.content }}</p>
+																										<div class="review__date">
+															                          <span><a class="blog__answer__reply">RESPONDER</a> | <a href="">EDITAR</a> | <a href="">BORRAR</a></span>
+															                      </div>
+				                                        </div>
+																							</div>
+
+
+				                                    <!-- Start Answer Review -->
+																						{% for answer in review.answers.all %}
+				                                    <div class="pro__review ans">
+				                                        <div class="review__thumb">
+																									{% get_user_image username=answer.author as user_profile %}
+																										{% if user_profile %}
+																											<img src="{{ user_profile.profile_image.url }}" alt="comment images">
+																										{% else %}
+																											<img src="{% static 'images/user_default_image.jpg' %}" alt="comment images">
+																										{% endif %}
+				                                        </div>
+				                                        <div class="review__details">
+				                                            <div class="review__info">
+				                                                <h4><a href="#">{{ answer.title }}</a></h4>
+				                                                <ul class="rating">
+				                                                    <li><i class="zmdi zmdi-star"></i></li>
+				                                                    <li><i class="zmdi zmdi-star"></i></li>
+				                                                    <li><i class="zmdi zmdi-star"></i></li>
+				                                                    <li><i class="zmdi zmdi-star-half"></i></li>
+				                                                    <li><i class="zmdi zmdi-star-half"></i></li>
+				                                                </ul>
+																												<h4><a href="#">{{ review.mark }}</a></h4>
+				                                                <div class="rating__send">
+				                                                    <a href="#"><i class="zmdi zmdi-mail-reply"></i></a>
+				                                                    <a href="#"><i class="zmdi zmdi-close"></i></a>
+				                                                </div>
+				                                            </div>
+				                                            <div class="review__date">
+				                                                <span>{{ answer.author }} | {{ answer.created_date }}</span>
+				                                            </div>
+				                                            <p>{{ answer.content }}</p>
+				                                        </div>
+				                                    </div>
+																						{% endfor %}
+																						{% endfor %}
+																						{% else %}
+														                      <h2 class="section-title-2">SIN OPINIONES</h2>
+														                {% endif %}
+				                                </div>
+
+																				<!-- Start Review Form Area -->
+				                                <div class="review__box">
+																					<div class="rating__wrap">
+																							<a class="blog__comment__reply"><h2 class="contact__title">DEJA TU OPINION</h2></a>
+					                                </div>
+																						{% include 'review_form.html' %}
+				                                </div>
+
+																				<!-- Start Anwer Form Area -->
+
+				                            </div>
+																	</div>
+				                        </div>
+				                    </div>
+				                </div>
+				            </div>
+				        </section>
+
+{% endblock %}

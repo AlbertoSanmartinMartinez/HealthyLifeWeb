@@ -1,0 +1,64 @@
+{% load static %}
+
+<!-- Start Last Posts Home Area -->
+<section class="htc__blog__area bg__white pb--100">
+  <div class="container">
+
+    <!-- Start Title Area -->
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="section__title text-center">
+          <h2 class="title__line">Últimas Noticias</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="blog__wrap clearfix mt--60 xmt-30">
+
+        <!-- Start Single Blog -->
+        {% for post in last_posts %}
+          <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+            <div class="blog foo">
+              <div class="blog__inner">
+                <div class="blog__thumb">
+
+                  <!-- Star Header Image Area -->
+                  {% for item in post.album.image_set.all %}
+                    {% if item.header_image %}
+                      <a href="{% url 'blog:detail_post' post_slug=post.slug %}">
+                        <img src="{{ item.image.url }}" alt="blog images">
+                      </a>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <br>
+                <h3>{{ post.title }}</h3>
+                <br>
+                <!--<p>Date: {{ post.created_date.day }}/{{ post.created_date.month }}/{{ post.created_date.year }}</p>-->
+                <p>Category:<a href="{% url 'blog:category_posts' category=post.category.slug %}"> {{ post.category.name }}</a></p>
+                <p>Author:<a href="{% url 'blog:author_posts' username=post.author.username %}"> {{ post.author.username }}</a></p>
+                <br>
+                <p>{{ post.description }}</p>
+                <br>
+                <div class="blog__btn">
+                  <a class="read__more__btn" href="{% url 'blog:detail_post' post_slug=post.slug %}">Leer Más</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        {% endfor %}
+
+      </div>
+    </div>
+    <!-- Go To Blog Button -->
+        <div class="row mt--60">
+            <div class="col-md-12">
+                <div class="htc__loadmore__btn">
+                    <a href="{% url 'blog:list_post' %}">Ir al Blog</a>
+                </div>
+            </div>
+        </div>
+  </div>
+</section>

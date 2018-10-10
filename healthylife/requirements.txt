@@ -1,0 +1,14 @@
+easy_thumbnails==2.5
+djangorestframework_jwt==1.11.0
+dj_database_url==0.5.0
+django_heroku==0.3.1
+requests==2.19.1
+django_ckeditor==5.6.1
+Django==2.1.2
+django_payments==0.13.0
+django_image_cropping==1.2.0
+python_decouple==3.1
+Pillow==5.3.0
+dj_static==0.0.6
+payments==0.02
+djangorestframework==3.8.2

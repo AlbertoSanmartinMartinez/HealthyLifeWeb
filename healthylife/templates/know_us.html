@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load cropping thumbnail %}
+
+{% block extra_head %}
+  {{ form.media }}
+{% endblock %}
+
+{% block know_us %}
+
+<!-- Start Bradcaump area -->
+  <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url({% static 'images/know_us_banner_1.jpg' %}) no-repeat scroll center center / cover ;">
+    <div class="ht__bradcaump__wrap">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="bradcaump__inner text-center">
+              <h2 class="bradcaump-title">Conocenos</h2>
+              <!--<nav class="bradcaump-inner">
+                <a class="breadcrumb-item" href="index.html">Home</a>
+                <span class="brd-separetor">/</span>
+                <span class="breadcrumb-item active">About Us</span>
+              </nav>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start Project Area -->
+  <section class="htc__store__area ptb--120 bg__white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section__title section__title--2 text-center">
+            <h2 class="title__line">Barbastro Se Mueve</h2>
+            <p>Somos un equipo de profesionales idearios del proyecto Barbastro Se Mueve, comprometido con mantener y mejorar las condiciones de salud de las personas de nuestra ciudad y queremos aprovechar la tecnología para promocionar un estilo de vida saludable mediante la realización de actividad física y la mejora de los hábitos nutricionales que supongan una mejora en vuestra salud.<p>
+            <p>El proyecto surgió de la idea de Beatriz González, nuestra enfermera, que conociendo las nuevas corrientes en innovación, tecnología y salud imaginó una herramienta basada en la monitorización de la actividad física que pudiese ayudarnos a mejorar nuestra salud y mantener un estilo de vida saludable.<br/>
+              Santy Conde, nuestro pediatra, creyó en la idea y le puso muchas ganas para hacerla crecer.<br/>
+              Y gracias a La Sonrisa De Hugo, tuvimos la suerte de conocer a Alberto Sanmartín, nuestro informático y desarrollador, que ha dado alas además de muchas horas de trabajo a este proyecto. Entre los tres pensamos en cómo crear una aplicación para smpartphones que midiese la actividad física que realizamos, que nos permitiera superarnos, competir con nuestros vecinos de forma amigable, que nos permitiese ver nuestros progresos, ofrecer consejos para mantener y mejorar la salud contando con la participación de otras personas de nuestra ciudad y obtener pequeñas recompensas que nos estimulen a seguir trabajando por nuestra salud.
+            <p>Creemos en el valor que puede aportarnos la cercanía de nuestras instituciones, de nuestros comercios y de nuestros colaboradores expertos en salud, que además, algunos de ellos son ejemplo de esfuerzo y superación para nosotros, les conocemos de cerca y sabemos que aportan mucho al proyecto.</p>
+            <p>Ojalá algún dia podamos decir que la salud de Barbastro es un poquito mejor, simplemente porque <strong>Barbastro Se Mueve.</strong></p>
+          </div>
+          <div class="store__btn">
+            <a href="{% url 'work_with_our' %}">Únete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Start Team Area -->
+<section class="htc__team__area bg__white ptb--120">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section__title section__title--2 text-center">
+          <h2 class="title__line">Equipo</h2>
+          <p>Trabajamos por Barbastro</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="team__wrap clearfix mt--60">
+
+        <!-- Start Single Member -->
+        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+          <div class="team foo">
+            <div class="team__thumb">
+              <a href="">
+                <img src="{% static 'images/team/1.jpg' %}" alt="team images">
+              </a>
+            </div>
+            <div class="team__bg__color"></div>
+            <div class="team__hover__info">
+              <div class="team__hover__action">
+                <h2><a href="#">Beatriz González</a></h2>
+                <ul class="social__icon">
+                  <li><a href="https://twitter.com/devitemsllc" target="_blank"><i class="zmdi zmdi-twitter"></i></a></li>
+                  <li><a href="https://www.instagram.com/devitems/" target="_blank"><i class="zmdi zmdi-instagram"></i></a></li>
+                  <li><a href="https://www.facebook.com/devitems/?ref=bookmarks" target="_blank"><i class="zmdi zmdi-facebook"></i></a></li>
+                  <li><a href="https://plus.google.com/" target="_blank"><i class="zmdi zmdi-google-plus"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Start Single Member -->
+        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+          <div class="team foo">
+            <div class="team__thumb">
+              <a href="">
+                <img src="{% static 'images/team/1.jpg' %}" alt="team images">
+              </a>
+            </div>
+            <div class="team__bg__color"></div>
+            <div class="team__hover__info">
+              <div class="team__hover__action">
+                <h2><a href="#">Santiago Conde</a></h2>
+                <ul class="social__icon">
+                  <li><a href="https://twitter.com/devitemsllc" target="_blank"><i class="zmdi zmdi-twitter"></i></a></li>
+                  <li><a href="https://www.instagram.com/devitems/" target="_blank"><i class="zmdi zmdi-instagram"></i></a></li>
+                  <li><a href="https://www.facebook.com/devitems/?ref=bookmarks" target="_blank"><i class="zmdi zmdi-facebook"></i></a></li>
+                  <li><a href="https://plus.google.com/" target="_blank"><i class="zmdi zmdi-google-plus"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Start Single Member -->
+        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+          <div class="team foo">
+            <div class="team__thumb">
+              <a href="">
+                <img src="{% static 'images/team/1.jpg' %}" alt="team images">
+              </a>
+            </div>
+            <div class="team__bg__color"></div>
+            <div class="team__hover__info">
+              <div class="team__hover__action">
+                <h2><a href="#">Alberto Sanmartín</a></h2>
+                <ul class="social__icon">
+                  <li><a href="https://twitter.com/devitemsllc" target="_blank"><i class="zmdi zmdi-twitter"></i></a></li>
+                  <li><a href="https://www.instagram.com/devitems/" target="_blank"><i class="zmdi zmdi-instagram"></i></a></li>
+                  <li><a href="https://www.facebook.com/devitems/?ref=bookmarks" target="_blank"><i class="zmdi zmdi-facebook"></i></a></li>
+                  <li><a href="https://www.linkedin.com/in/albertosanmartinmartinez/" target="_blank"><i class="zmdi zmdi-linkedin"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Start Collaborator Area -->
+  <section class="htc__team__area bg__white ptb--120">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section__title section__title--2 text-center">
+            <h2 class="title__line">Colaboradores</h2>
+            <p>Rodeados de los mejores</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="team__wrap clearfix mt--60">
+
+          <!-- Start Single Collaborator -->
+          {% for collaborator in collaborators %}
+          <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
+            <div class="team foo">
+              <div class="team__thumb">
+                <a href="">
+                  <!--<img src="{{ collaborator.collaborator_image.url }}" alt="team images">-->
+                  <img src="{% cropped_thumbnail collaborator 'cropping' %}"/>
+                </a>
+              </div>
+              <div class="team__bg__color"></div>
+              <div class="team__hover__info">
+                <div class="team__hover__action">
+                  <h2><a href="#">{{ collaborator.user.first_name }}</a></h2>
+                  <!--<ul class="social__icon">
+                    <li><a href="https://twitter.com/devitemsllc" target="_blank"><i class="zmdi zmdi-twitter"></i></a></li>
+                    <li><a href="https://www.instagram.com/devitems/" target="_blank"><i class="zmdi zmdi-instagram"></i></a></li>
+                    <li><a href="https://www.facebook.com/devitems/?ref=bookmarks" target="_blank"><i class="zmdi zmdi-facebook"></i></a></li>
+                    <li><a href="https://plus.google.com/" target="_blank"><i class="zmdi zmdi-google-plus"></i></a></li>
+                  </ul>-->
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Start Companies Area -->
+  <div class="htc__brand__area bg__white ptb--120">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section__title section__title--2 text-center">
+            <h2 class="title__line">Empresa</h2>
+            <p>Slogan empresas</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="team__wrap clearfix mt--60">
+
+          <!-- Start Single Team -->
+          {% for company in companies %}
+            <div class="col-md-3 col-lg-3 col-sm-6 col-xs-12">
+              <div class="team foo">
+                <div class="team__thumb">
+                  <a href="#">
+                    <!--<img src="{{ company.company_image.url }}" alt="team images">-->
+                    <img src="{% cropped_thumbnail company 'cropping' %}"/>
+                  </a>
+                  <!--<h2><a href="#">{{ company.company_name }}</a></h2>-->
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
